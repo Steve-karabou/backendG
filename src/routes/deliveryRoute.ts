@@ -5,9 +5,9 @@ const router = Router();
 //Delivery
 router.post("/", deliveryController.saveDelivery);
 
-router.get("/:id", deliveryController.getOneDelivery);
+router.get("/:id", deliveryController.oneDelivery);
 
-router.get("/", deliveryController.getAllDelivery);
+router.get("/", deliveryController.allDelivery);
 
 router.put("/:id", deliveryController.updateDelivery);
 

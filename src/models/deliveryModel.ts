@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
 
 let deliverySchema = new mongoose.Schema({
-    package_id: [{type: String}],
-    pickup_time:{type:  Date},
-    start_time: { type:  Date },
-    end_time: {type:  Date},
+    package_id: {type: String},
+    pickup_time:{type: Date },
+    start_time: { type: Date },
+    end_time: {type: Date },
     location: {
-        lat: {type: String},
-        lng: {type: String}
+        lat: {type: Number},
+        lng: {type: Number}
      },
-    status: {}
+    status: {type: String, enum: ["open", "picked-up", "in-transit", "delivered", "failed"]}
 
 })
 

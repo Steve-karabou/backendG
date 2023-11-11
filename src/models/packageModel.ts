@@ -24,7 +24,7 @@ let packageSchema = new mongoose.Schema({
 
 packageSchema.plugin(mongoosePaginate);
 
-const Package = mongoose.model("Delivery", packageSchema);
+const Package = mongoose.model("Package", packageSchema);
 
 export default Package;
 
