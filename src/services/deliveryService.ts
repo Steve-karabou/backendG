@@ -7,6 +7,7 @@ export default class DeliveryService {
       const delivery = new Delivery({
         pickup_time: value.pickup_time,
         start_time: value.start_time,
+        package_id: value.package_id,
         location: {
             lat: value.location_lat,
             lng: value.location_lng

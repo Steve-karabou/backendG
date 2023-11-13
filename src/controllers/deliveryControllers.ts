@@ -12,7 +12,8 @@ export default class DeliveryController {
             start_time: Joi.date().required().label("start time"),
             location_lat: Joi.number().required().label("location lat"),
             location_lng: Joi.number().required().label("location lng"),
-            status: Joi.string().required().label("status")
+            status: Joi.string().required().label("status"),
+            package_id: Joi.string().required().label("Package Id"),
          });
         
         const {value, error} = schema.validate(req.body);
