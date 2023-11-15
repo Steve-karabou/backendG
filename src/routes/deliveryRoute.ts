@@ -6,7 +6,6 @@ const router = Router();
 router.post("/", deliveryController.saveDelivery);
 
 router.get("/:id", deliveryController.oneDelivery);
-
 router.get("/", deliveryController.allDelivery);
 
 router.put("/:id", deliveryController.updateDelivery);

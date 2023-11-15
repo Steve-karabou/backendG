@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
+import { v4 as uuidv4 } from 'uuid';
 
 let deliverySchema = new mongoose.Schema({
+    delivery_id: {type: String, default: uuidv4()},
     package_id: {type: String},
     pickup_time:{type: Date },
     start_time: { type: Date },
@@ -13,6 +15,7 @@ let deliverySchema = new mongoose.Schema({
     status: {type: String, enum: ["open", "picked-up", "in-transit", "delivered", "failed"]}
 
 })
+deliverySchema.index({ _id: 1, package_id: 1 }, { unique: true })
 
 deliverySchema.plugin(mongoosePaginate);
 

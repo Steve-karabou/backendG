@@ -1,4 +1,5 @@
 import Delivery from "../models/deliveryModel";
+import Package from "../models/packageModel";
 
 export default class DeliveryService {
 
@@ -35,4 +36,6 @@ export default class DeliveryService {
     static async updateOneDelivery(id: string, value: any):Promise<any>{
         return await Delivery.findByIdAndUpdate(id, value);
     }
+
+  
 }
