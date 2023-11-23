@@ -3,6 +3,7 @@ import Joi from "joi";
 import ClientError from "../exceptions/clientError";
 import DeliveryService from "../services/deliveryService";
 
+
 export default class DeliveryController { 
 
     static async saveDelivery(req:Request, resp: Response){
@@ -97,6 +98,15 @@ export default class DeliveryController {
         }catch(err){
             console.log(err)
         }
+    }
+
+    static async deliveryByIdAndPackage(req: Request, resp: Response){
+        try{
+            const result = await DeliveryService.getDeliveryByIdAndPackage(req.params.id)
+            resp.status(200).json(result)
+           }catch(err){
+               console.log(err)
+           }
     }
 
 

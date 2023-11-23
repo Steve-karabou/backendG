@@ -1,10 +1,8 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
-import { v4 as uuidv4 } from 'uuid';
 
 let deliverySchema = new mongoose.Schema({
-    delivery_id: {type: String, default: uuidv4()},
-    package_id: {type: String},
+    package_id: {type: mongoose.Schema.Types.ObjectId,},
     pickup_time:{type: Date },
     start_time: { type: Date },
     end_time: {type: Date },

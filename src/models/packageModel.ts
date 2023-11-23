@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
-import { v4 as uuidv4 } from 'uuid';
 
 let packageSchema = new mongoose.Schema({
-    package_id: {type: String, default: uuidv4()},
     active_delivery_id: {type: String},
     description: {type: String},
     weight : {type: Number},
