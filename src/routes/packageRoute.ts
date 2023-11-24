@@ -2,8 +2,10 @@ import {Router} from "express";
 import packageController from "../controllers/packageControllers";
 const router = Router();
 
-//Delivery
+//Package
 router.post("/", packageController.savePackage);
+
+router.get("/search/:id", packageController. packageByIdAndDelivery);
 
 router.get("/:id", packageController.onePackage);
 

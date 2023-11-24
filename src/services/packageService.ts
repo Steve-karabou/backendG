@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Package from "../models/packageModel";
 
 export default class PackageService {
@@ -44,5 +45,25 @@ export default class PackageService {
 
     static async updateOnePackage(id: string, value: any):Promise<any>{
         return await Package.findByIdAndUpdate(id, value);
+    }
+
+    static async getPackageByIdAndDelivery(Id: string){
+        console.log("Karabou:", Id)
+        return await Package.aggregate([
+        { $match: { _id: new mongoose.Types.ObjectId(Id) } }, 
+        { "$lookup" : {
+            "from": "deliveries",
+            "localField":"active_delivery_id",
+            "foreignField":"_id",
+            "as": "delivery",
+            // "let": { packageId: '$package_id' },
+            //  "pipeline": [
+            //             { $match: { $expr: { $eq: ['$$packageId', '$id'] } } },
+            //         ],
+             }
+          },
+          
+        ])
+    
     }
 }

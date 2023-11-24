@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate";
 
 let packageSchema = new mongoose.Schema({
-    active_delivery_id: {type: String},
+    active_delivery_id: {type: mongoose.Schema.Types.ObjectId},
     description: {type: String},
     weight : {type: Number},
     width : {type: Number},

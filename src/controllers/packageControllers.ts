@@ -46,22 +46,28 @@ export default class PackageController {
     static async updatePackage(req: Request, resp: Response){
 
         const schema = Joi.object({
-            description: Joi.string().required().label("description"),
-            weight : Joi.number().required().label("weight"),
-            width : Joi.number().required().label("width"),
-            height: Joi.number().required().label("height"),
-            depth: Joi.number().required().label("depth"),
-            from_name : Joi.string().required().label("from name "),
-            from_address : Joi.string().required().label("from address "),
-            from_location_lat: Joi.number().required().label(" from location lat"),
-            from_location_lng: Joi.number().required().label(" from location lng"),
-            to_name : Joi.string().required().label("name"),
-            to_address: Joi.string().required().label("address"),
-            to_location_lat: Joi.number().required().label(" to location lat"),
-            to_location_lng: Joi.number().required().label(" to location lng"),
+            description: Joi.string().label("description"),
+            active_delivery_id: Joi.string().label("Id Delivery"),
+            weight : Joi.number().label("weight"),
+            width : Joi.number().label("width"),
+            height: Joi.number().label("height"),
+            depth: Joi.number().label("depth"),
+            from_name : Joi.string().label("from name "),
+            from_address : Joi.string().label("from address "),
+            from_location: {
+                lat: Joi.number().label(" from location lat"),
+                lng: Joi.number().label(" from location lng"),
+              },        
+            to_name : Joi.string().label("name"),
+            to_address: Joi.string().label("address"),
+            to_location: {
+                lat: Joi.number().label(" from location lat"),
+                lng: Joi.number().label(" from location lng"),
+            } ,
          });
 
         const {value, error} = schema.validate(req.body);
+        console.log("Value:", value);
 
         try{
 
@@ -111,5 +117,14 @@ export default class PackageController {
         }catch(err){
             console.log(err)
         }
+    }
+
+    static async packageByIdAndDelivery(req: Request, resp: Response){
+        try{
+            const result = await PackageService.getPackageByIdAndDelivery(req.params.id)
+            resp.status(200).json(result)
+           }catch(err){
+               console.log(err)
+           }
     }
 }
